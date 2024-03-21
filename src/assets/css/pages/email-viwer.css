@@ -1,0 +1,43 @@
+h6{
+        display: grid;
+}
+.mail{
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+}
+.email-list{
+        font-size: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        
+}
+h6,.emailsubject{
+
+        grid-column: 1/2;
+        align-items: flex-start;
+}
+h6,.emailbody{
+
+        grid-column: 2/3;
+        align-items: flex-start;
+}
+h6,.emailsent{
+
+        grid-column: 3/4;  
+}
+
+
+.not-read{
+        background-color: #f2f6fc;
+}
+
+.is-read{
+        background-color: #ffffff;
+}
+
+#readId{
+        display: grid;
+        border:solid 1px rgb(227, 227, 227)
+}
+

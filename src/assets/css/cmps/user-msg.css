@@ -1,0 +1,14 @@
+.user-msg{
+   font-size: 25px;
+    width: 200px;
+    height: 120px;
+    position: absolute;
+    right: 10px;
+    bottom: 40px;
+}
+
+.user-msg button{
+    align-items: center;
+    color: black;
+}
+

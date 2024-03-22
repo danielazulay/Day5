@@ -3,14 +3,17 @@ h6{
 }
 .mail{
         display: grid;
-        grid-template-columns: 4fr 1fr;
+        grid-template-columns:1fr 4fr 1fr;
 }
 .email-list{
         font-size: 30px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-
-        
+        grid-template-columns: 1fr 2fr 2fr; 
+}
+.email,.star{
+        display: center;
+        justify-content: center;
+        align-items: center;
 }
 h6,.emailsubject{
 
@@ -40,4 +43,3 @@ h6,.emailsent{
         display: grid;
         border:solid 1px rgb(227, 227, 227)
 }
-

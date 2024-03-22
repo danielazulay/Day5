@@ -21,3 +21,21 @@
     background-color: #1e90ff; 
     transform: translateX(2px); 
 } 
+.header-menu{
+    padding-left: 40px;
+}
+.nav,.header-menu{
+    display: flex;
+    justify-content:space-between;
+    
+}
+
+.gmail-option{
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-right: 20px;
+    
+}
+

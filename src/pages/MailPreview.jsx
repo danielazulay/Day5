@@ -3,10 +3,39 @@ import { utilService } from "../services/util.service";
 import { mailService } from "../services/mail.service";
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material-next/Button';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
+import { useState } from "react";
 
 const MAIL = "emails";
 
 export function MailPreview({ email, handleDelete, setMails }) {
+
+  const [star,setStar] = useState(false)
+
+ async function  handleChange({id}){
+
+  let email = await mailService.getById(id);
+
+  email.isStarred = !email.isStarred;
+
+  let emailUpdated = await mailService.updateEmail(email);
+
+  setStar(pastState=>!pastState)
+
+  setMails((prev) => {
+    return prev.map((curent) => {
+      if (curent.id === id) {
+        return emailUpdated;
+      } else {
+        return curent;
+      }
+    });
+  });
+}
+
+ 
+  
   async function onToggleSection(email) {
     email.isRead = true;
     let emailUpdated = await mailService.updateEmail(email);
@@ -29,6 +58,7 @@ export function MailPreview({ email, handleDelete, setMails }) {
         className={`mail ${email.isRead ? "is-read" : "not-read"}`}
         onClick={() => onToggleSection(email)}
       >
+          {star?<StarIcon className="star"  onClick={()=>{handleChange(email)}}/>:<StarBorderIcon className="star" onClick={()=>{handleChange(email)}}/>}
         <Link to={`${email.id}`} className="email-list">
           <h6 className="emailsubject">{email.subject}</h6>
           <h6 className="emailbody">{email.body}</h6>
@@ -36,18 +66,19 @@ export function MailPreview({ email, handleDelete, setMails }) {
             {new Date(email.sentAt).toLocaleString()}
           </h6>
         </Link>
-
+        <div className="side-options">
         <a
-          className="deleteemail"
           onClick={(ev) => {
             handleDelete(ev, email.id);
           }}
         >
-          <IconButton aria-label="delete" size="small">
+          <IconButton  aria-label="delete" size="small">
             <DeleteIcon fontSize="small" />
           </IconButton>
         </a>
-
+        
+        
+          </div>
       </section>
     </>
   );

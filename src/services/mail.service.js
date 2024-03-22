@@ -38,7 +38,7 @@ async function query({ txt, status, isRead }) {
         );
         break;
       case "star":
-        emails = emails.filter((m) => m.isStarred && m.removedAt === false);
+        emails = emails.filter((m) => m.isStarred === true && m.removedAt === false);
         break;
       case "trash":
         emails = emails.filter((m) => m.removedAt === true);

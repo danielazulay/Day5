@@ -79,9 +79,6 @@ export function MailIndex() {
         setMails((prev) => {
           return prev.filter((current) => current.id !== emailId);
         });
-    
-      
-     
 
       }
     } catch (err) {
@@ -97,10 +94,6 @@ export function MailIndex() {
     } catch (err) {
       console.log("erro : ", err);
     }
-  }
-
-  async function onAnimate(){
-    await utilService.animateCSS()
   }
 
   if (!emails) return <>loading...</>;

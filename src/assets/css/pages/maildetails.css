@@ -18,19 +18,27 @@
 }
 
 .subjectdetails{
+    margin-top: 10px;
     margin-left: 50px;
+    margin-bottom: 30px;
 }
 
 aside,.sent-details{
     margin-left: 50px;
     display: flex;
     align-items:flex-start;
-    margin: 5px;
+    margin-left: 5px;
     
+}
+.sender{
+    margin-left: 25px;
+    font-weight: 700;
 }
 
 h3,.time-sent{
     position: 10px;
+    margin-left: 20px;
+    font-size: small;
 }
 
 p,.email-body{

@@ -4,6 +4,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AppsIcon from "@mui/icons-material/Apps";
 import SearchBar from "./SearchBar";
+import { Avatar } from "@mui/material";
 
 export function AppHeader({ filter, setFilter }) {
   const [filterBy, setFilterBy] = useState("");
@@ -23,7 +24,7 @@ export function AppHeader({ filter, setFilter }) {
   return (
     <nav className="header-menu">
       <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png" />
-<SearchBar filter={filter} setFilter={setFilter} />
+<SearchBar className="filter-bar" filter={filter} setFilter={setFilter} />
       {/* <form>
         <button type submit>
           <svg
@@ -46,7 +47,7 @@ export function AppHeader({ filter, setFilter }) {
           onChange={handleChange}
         ></input>
       </form> */}
-      <aside>
+      <aside className="gmail-option">
         <Button color="primary" size="large" variant="filledTonal">
           Active
         </Button>
@@ -54,6 +55,7 @@ export function AppHeader({ filter, setFilter }) {
 
         <SettingsIcon className="Outlined" />
         <AppsIcon></AppsIcon>
+        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
       </aside>
     </nav>
   );

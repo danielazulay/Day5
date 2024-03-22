@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { mailService } from "../services/mail.service";
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const MAIL = "emails";
 const from = 'me'
@@ -14,6 +14,7 @@ export function MailDetails() {
 
 
   useEffect(() => {
+    console.log(params)
     loadMails();
 
   }, []);
@@ -36,16 +37,16 @@ export function MailDetails() {
   return (
     <div>
       <nav>
-        <span onClick={()=>{navigate(`/mail/${params.folder}`)}}>&#8592;</span>{" "}
-        <button className="trash-button">&#128465;</button>
+        <ArrowBackIcon fontSize="small" onClick={()=>{navigate(`/mail/${params.folder}`)}}/>
       </nav>
       <h1 className="subjectdetails">{email.subject}</h1>
-
+ 
       <aside className="sent-details">
         <div className="logo-name">{email.from?email.from[0].toUpperCase():from}</div>
-        <h5>
-          {email.from?"from  "+email.from.split("@")[0]:"from Me"}
+        <h5 className="sender">
+          {email.from?email.from.split("@")[0]:email.to.split("@")[0]}
           </h5>
+          <h5>{email.from?" <"+email.from+"> ":" <"+email.to+"> "}</h5>
         <h3 className="time-sent">
           {new Date(email.sentAt).toLocaleString().substring(10)}
         </h3>

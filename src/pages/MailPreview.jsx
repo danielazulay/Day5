@@ -76,8 +76,6 @@ export function MailPreview({ email, handleDelete, setMails }) {
             <DeleteIcon fontSize="small" />
           </IconButton>
         </a>
-        
-        
           </div>
       </section>
     </>

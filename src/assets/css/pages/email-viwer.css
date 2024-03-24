@@ -24,6 +24,10 @@ h6,.emailbody{
 
         grid-column: 2/3;
         align-items: flex-start;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-left: 15px;
 }
 h6,.emailsent{
 

@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import Button from "@mui/material-next/Button";
+import CreateIcon from '@mui/icons-material/Create';
+
 export function AppsideMenu({ openCompose, setFilter }) {
   return (
     <div className="side-menu">
       <Button color="activity" variant="filledTonal" onClick={openCompose}>
-        Compose
+        <CreateIcon fontSize="small"></CreateIcon>Compose
       </Button>
       <Link
         to={"/mail/inbox"}

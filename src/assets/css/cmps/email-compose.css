@@ -1,33 +1,44 @@
 .compose-modal{
     padding: 0,5px;
-    width:350px;
+    width:450px;
     height: 500px;
     display: flex;
     flex-direction: column;
     position: absolute;
     right: 120px;
     bottom: 10px;
-    background-color: #fefefe;
+    background-color:white;
     overflow: auto; /* Enable scroll if needed */
 
-        -webkit-border-radius: 8px 8px 0 0;
-        border-radius: 8px 8px 0 0;
+        border-radius: 8px 8px 8px  8px ;
         -webkit-box-shadow: 0px 8px 10px 1px rgba(0,0,0,.14),0px 3px 14px 2px rgba(0,0,0,.12),0px 5px 5px -3px rgba(0,0,0,.2);
         box-shadow: 0px 8px 10px 1px rgba(0,0,0,.14),0px 3px 14px 2px rgba(0,0,0,.12),0px 5px 5px -3px rgba(0,0,0,.2);
 
 }
 .composeExit{
-    background-color: #f4f4f4;
-    height: 255px;
+    background-color: #eaf1fb;
+    height: 300px;
+    display: flex;
+    justify-content:space-between;
+    padding-left: 15px;
+    align-items: center;
+}
+.composeExit,h5{
+   font-weight:500;
+   font-size:16px
 }
 .body-input{
-    width: 340px;
+    width: 450px;
     height: 3500px;
+}
+.inputcompose{
+    padding: 3px;
+    background-color: white;
 }
 .SendButton{
     width: 70px;
     height: 30px;
-    left: 270px;
+    left: 0;
 }
 .send-menu{
     background-color: #f4f4f4;

@@ -11,7 +11,14 @@ export const mailService = {
   save,
   createEmails,
   updateEmail,
-  sendEmail
+  sendEmail,
+  getEmail,
+  getName,
+};
+
+export const loggedUser = {
+  email: "momo@momo.com",
+  name: "momo",
 };
 
 createEmails();
@@ -34,18 +41,22 @@ async function query({ txt, status, isRead }) {
     switch (status) {
       case "inbox":
         emails = emails.filter(
-          (email) => email.to === "user@appsus.com" && email.removedAt === false
+          (email) => email.to === loggedUser.email && email.removedAt === false
         );
         break;
       case "star":
-        emails = emails.filter((m) => m.isStarred === true && m.removedAt === false);
+        emails = emails.filter(
+          (m) => m.isStarred === true && m.removedAt === false
+        );
         break;
       case "trash":
         emails = emails.filter((m) => m.removedAt === true);
         break;
-        case "sent":
-          emails = emails.filter((m) => m.from === "" && m.removedAt === false);
-          break;
+      case "sent":
+        emails = emails.filter(
+          (m) => m.from === loggedUser.email && m.removedAt === false
+        );
+        break;
     }
   }
 
@@ -95,8 +106,8 @@ async function createEmails() {
         isStarred: true,
         sentAt: 1551133930594,
         removedAt: false,
-        from: "momo@momo.com",
-        to: "user@appsus.com",
+        from: "user@appsus.com",
+        to: loggedUser.email,
       },
       {
         id: "e102",
@@ -106,8 +117,8 @@ async function createEmails() {
         isStarred: false,
         sentAt: 1551133930598,
         removedAt: false,
-        from: "daniel@momo.com",
-        to: "user@appsus.com",
+        from: "user@appsus.com",
+        to: loggedUser.email,
       },
       {
         id: "e103",
@@ -117,8 +128,8 @@ async function createEmails() {
         isStarred: false,
         sentAt: 15511339305,
         removedAt: false,
-        from: "fabi@momo.com",
-        to: "user@appsus.com",
+        from: "user@appsus.com",
+        to: loggedUser.email,
       },
       {
         id: "e104",
@@ -128,8 +139,8 @@ async function createEmails() {
         isStarred: false,
         sentAt: 15511339,
         removedAt: false,
-        from: "fab@momo.com",
-        to: "user@appsus.com",
+        from: "user@appsus.com",
+        to: loggedUser.email,
       },
     ];
 
@@ -138,42 +149,20 @@ async function createEmails() {
   }
 }
 
-
 async function sendEmail(data) {
-
   let emails = utilService.loadFromStorage(MAIL_KEY);
-      data.id =(Math.round( Math.random() * (150 - 1) + 1)).toString();;
-      data.from = ""
-      emails = [...emails,data]
-      data.sentAt = Date.now();
-      data.removedAt= false;
-    utilService.saveToStorage(MAIL_KEY, emails);
-  
+  data.id = Math.round(Math.random() * (150 - 1) + 1).toString();
+  data.from = loggedUser.email;
+  emails = [...emails, data];
+  data.sentAt = Date.now();
+  data.removedAt = false;
+  utilService.saveToStorage(MAIL_KEY, emails);
 }
 
-// function getEmptyCar(vendor = '', maxSpeed = '') {
-//     return { vendor, maxSpeed }
-// }
+function getName(email) {
+  return email.split("@")[0];
+}
 
-// function getDefaultFilter(filterBy = { txt: '', minSpeed: 0 }) {
-//     return { txt: filterBy.txt, minSpeed: filterBy.minSpeed }
-// }
-
-// function _createCars() {
-//     let cars = utilService.loadFromStorage(CAR_KEY)
-//     if (!cars || !cars.length) {
-//         cars = []
-//         const vendors = ['audu', 'fiak', 'subali', 'mitsu']
-//         for (let i = 0; i < 6; i++) {
-//             const vendor = vendors[utilService.getRandomIntInclusive(0, vendors.length - 1)]
-//             cars.push(_createCar(vendor, utilService.getRandomIntInclusive(80, 300)))
-//         }
-//         utilService.saveToStorage(CAR_KEY, cars)
-//     }
-// }
-
-// function _createCar(vendor, maxSpeed = 250) {
-//     const car = getEmptyCar(vendor, maxSpeed)
-//     car.id = utilService.makeId()
-//     return car
-// }
+function getEmail(email) {
+  return " <" + email.from + "> ";
+}

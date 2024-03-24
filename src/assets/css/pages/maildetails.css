@@ -32,6 +32,12 @@ aside,.sent-details{
 }
 .sender{
     margin-left: 25px;
+}
+.senderto{
+   display: inline;
+}
+
+span{
     font-weight: 700;
 }
 
@@ -44,8 +50,8 @@ h3,.time-sent{
 p,.email-body{
     font: small / 1.5 Arial, Helvetica, sans-serif;
     text-align:start;
-    margin-left: 25px;
-    margin-top: 20px;
+    margin-left: 70px;
+    margin-top: 10px;
 }
 
 foot, .reply-button{

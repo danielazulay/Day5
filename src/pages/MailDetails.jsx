@@ -1,27 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { mailService } from "../services/mail.service";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
-const MAIL = "emails";
-const from = 'me'
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Avatar } from "@mui/material";
 
 export function MailDetails() {
   const [email, setMail] = useState();
   let navigate = useNavigate();
   const params = useParams();
 
-
   useEffect(() => {
-    console.log(params)
+    console.log(params);
     loadMails();
-
   }, []);
-
-  function getSender(email){
-    return email.from.split("@")[0]
-  }
 
   async function loadMails() {
     try {
@@ -32,25 +24,37 @@ export function MailDetails() {
     }
   }
 
-  if(!email) return <div>loading...</div>
+  if (!email) return <div>loading...</div>;
 
   return (
     <div>
       <nav>
-        <ArrowBackIcon fontSize="small" onClick={()=>{navigate(`/mail/${params.folder}`)}}/>
+        <ArrowBackIcon
+          fontSize="small"
+          onClick={() => {
+            navigate(`/mail/${params.folder}`);
+          }}
+        />
       </nav>
       <h1 className="subjectdetails">{email.subject}</h1>
- 
-      <aside className="sent-details">
-        <div className="logo-name">{email.from?email.from[0].toUpperCase():from}</div>
+
+      <div className="sent-details">
+      <Avatar alt={email.from} src="/static/images/avatar" />
+
         <h5 className="sender">
-          {email.from?email.from.split("@")[0]:email.to.split("@")[0]}
-          </h5>
-          <h5>{email.from?" <"+email.from+"> ":" <"+email.to+"> "}</h5>
+          <span>{mailService.getName(email.from)}</span>
+          {}
+        </h5>
         <h3 className="time-sent">
           {new Date(email.sentAt).toLocaleString().substring(10)}
         </h3>
-      </aside>
+
+       <h5 className="senderto">
+        To <span>{mailService.getName(email.to)}</span>
+          {email.to ? " <" + email.to + "> " : " <" + email.to + "> "}
+        </h5>
+
+      </div>
 
       <pre className="email-body">{email.body}</pre>
 

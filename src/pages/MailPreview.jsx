@@ -58,7 +58,7 @@ export function MailPreview({ email, handleDelete, setMails }) {
         className={`mail ${email.isRead ? "is-read" : "not-read"}`}
         onClick={() => onToggleSection(email)}
       >
-          {star?<StarIcon className="star"  onClick={()=>{handleChange(email)}}/>:<StarBorderIcon className="star" onClick={()=>{handleChange(email)}}/>}
+       <div className="star"> {star?<StarIcon onClick={()=>{handleChange(email)}}/>:<StarBorderIcon  onClick={()=>{handleChange(email)}}/>}</div>  
         <Link to={`${email.id}`} className="email-list">
           <h6 className="emailsubject">{email.subject}</h6>
           <h6 className="emailbody">{email.body}</h6>

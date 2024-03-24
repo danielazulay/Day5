@@ -11,11 +11,6 @@ function query(entityType, delay = 200) {
   return new Promise((resolve) => setTimeout(() => resolve(entities), delay));
 }
 
-// function query(key, defaultValue = null) {
-//   var value = localStorage[key] || defaultValue;
-//   return JSON.parse(value);
-// }
-
 function get(entityType, entityId) {
   return query(entityType).then((entities) => {
     const entity = entities.find((entity) => entity.id === entityId);

@@ -2,7 +2,7 @@ export const utilService = {
   makeId,
   saveToStorage,
   loadFromStorage,
-  animateCSS
+  animateCSS,
 };
 
 function makeId(length = 5) {
@@ -16,7 +16,7 @@ function makeId(length = 5) {
 }
 
 function saveToStorage(key, value) {
-  console.log("---->",key, value)
+  console.log("---->", key, value);
   localStorage[key] = JSON.stringify(value);
 }
 
@@ -25,19 +25,18 @@ function loadFromStorage(key, defaultValue = null) {
   return JSON.parse(value);
 }
 
-
-
-function animateCSS(el, animation,isRemoveClass = true) {
-  const prefix = 'animate__'
+function animateCSS(el, animation, isRemoveClass = true) {
+  const prefix = "animate__";
   return new Promise((resolve, reject) => {
-      const animationName = `${prefix}${animation}`
-      el.classList.add(`${prefix}animated`, animationName)
-      function handleAnimationEnd(event) {
-          event.stopPropagation()
-          if(isRemoveClass)el.classList.remove(`${prefix}animated`, animationName)
-          resolve('Animation ended')
-      }
+    const animationName = `${prefix}${animation}`;
+    el.classList.add(`${prefix}animated`, animationName);
+    function handleAnimationEnd(event) {
+      event.stopPropagation();
+      if (isRemoveClass)
+        el.classList.remove(`${prefix}animated`, animationName);
+      resolve("Animation ended");
+    }
 
-      el.addEventListener('animationend', handleAnimationEnd, { once: true })
-  })
+    el.addEventListener("animationend", handleAnimationEnd, { once: true });
+  });
 }

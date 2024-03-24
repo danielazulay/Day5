@@ -10,11 +10,11 @@ h6{
         display: grid;
         grid-template-columns: 1fr 2fr 2fr; 
 }
-.email,.star{
-        display: center;
-        justify-content: center;
-        align-items: center;
+div,.star{
+
+
 }
+
 h6,.emailsubject{
 
         grid-column: 1/2;

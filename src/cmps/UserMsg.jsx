@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { eventBusService } from "../services/createEventEmitter";
+import { Button, Snackbar } from "@mui/material";
 
 
 
@@ -19,8 +20,16 @@ export function UserMsg(){
     }
 
     if(!msg) return <></>
-    return<div className={"user-msg "+msg.type} style={{backgroundColor: msg.color}}>
-        <p >{msg.txt}</p>
-        <button onClick={OncloseMsg}>x</button>
-    </div>
+    return    ( 
+    <Snackbar
+      open={open}
+      autoHideDuration={6000}
+      onClose={OncloseMsg}
+      message={msg.txt}
+     />)
+
+    // return<div className={"user-msg "+msg.type} style={{backgroundColor: msg.color}}>
+    //     <p >{msg.txt}</p>
+    //     <button onClick={OncloseMsg}>x</button>
+    // </div>
 }

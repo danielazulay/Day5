@@ -16,7 +16,6 @@ function makeId(length = 5) {
 }
 
 function saveToStorage(key, value) {
-  console.log("---->", key, value);
   localStorage[key] = JSON.stringify(value);
 }
 

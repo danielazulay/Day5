@@ -22,30 +22,25 @@
     margin-left: 50px;
     margin-bottom: 30px;
 }
+.email-goup{
+    display: grid;
+    grid-template-columns:  auto 1fr;
+    padding-left: 0;
+    margin-left: 0;
+}
+.sent-details{
+    display:inline;
+    margin-left: 8px; 
+    width: 5px;
+}
+.sent-sender{
+    display: inline-block;
+margin-left: 50px;
+margin-bottom: 15px;
+}
 
-aside,.sent-details{
-    margin-left: 50px;
-    display: flex;
-    align-items:flex-start;
-    margin-left: 5px;
+
     
-}
-.sender{
-    margin-left: 25px;
-}
-.senderto{
-   display: inline;
-}
-
-span{
-    font-weight: 700;
-}
-
-h3,.time-sent{
-    position: 10px;
-    margin-left: 20px;
-    font-size: small;
-}
 
 p,.email-body{
     font: small / 1.5 Arial, Helvetica, sans-serif;

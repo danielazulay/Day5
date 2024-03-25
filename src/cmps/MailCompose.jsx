@@ -49,7 +49,7 @@ export function MailCompose({ closeCompose }) {
         
         <form className="compose-modal" onSubmit={handleSubmit}>
          <div className="composeExit"><h5>New Message</h5><CloseIcon onClick={closeCompose}></CloseIcon></div>
-            <Input className="inputcompose" defaultValue="To" type="email" name="to" placeholder="Recipient" startAdornment={<InputAdornment position="start">To</InputAdornment>} value={email.to} onChange={handleChange}  />
+            <Input className="inputcompose"  type="email" name="to" placeholder="Recipient" startAdornment={<InputAdornment position="start">To</InputAdornment>} value={email.to} onChange={handleChange}  />
             <Input  className="inputcompose" type="text" name="subject" placeholder="subject" value={email.subject} onChange={handleChange} />
             <textarea type="text" name="body" className="body-input" value={email.body} onChange={handleChange}></textarea>
             <div className="send-menu">

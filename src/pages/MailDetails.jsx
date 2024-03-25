@@ -36,24 +36,22 @@ export function MailDetails() {
         />
       </nav>
       <h1 className="subjectdetails">{email.subject}</h1>
-
+          <div className="email-goup">
       <div className="sent-details">
       <Avatar alt={email.from} src="/static/images/avatar" />
-
-        <h5 className="sender">
-          <span>{mailService.getName(email.from)}</span>
-          {}
-        </h5>
-        <h3 className="time-sent">
+  
+        </div>
+        <div className="sent-sender">
+        <h5>
+          {mailService.getName(email.from)}
           {new Date(email.sentAt).toLocaleString().substring(10)}
-        </h3>
-
-       <h5 className="senderto">
-        To <span>{mailService.getName(email.to)}</span>
+        </h5>
+       <h5 >
+        To {mailService.getName(email.to)}
           {email.to ? " <" + email.to + "> " : " <" + email.to + "> "}
         </h5>
-
-      </div>
+        </div>
+        </div>
 
       <pre className="email-body">{email.body}</pre>
 

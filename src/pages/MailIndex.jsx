@@ -10,12 +10,12 @@ import { utilService } from "../services/util.service.js";
 
 const MAIL = "emails";
 
-export function MailIndex({ ContIsRead }) {
+export function MailIndex() {
   const [emails, setMails] = useState(null);
   const [filter, setFilter] = useState({ status: "", txt: "", isRead: null });
   const [compose, setCompose] = useState(null)
   const [qsParams, setQsParams] = useSearchParams()
-  const [contIsRead, setContIsRead] = useState(0)
+  const [contIsRead, setContIsRead] = useState(0) // TODO: 0 is wrong, find the relevant answer.
 
   const params = useParams()
 
@@ -103,7 +103,7 @@ export function MailIndex({ ContIsRead }) {
 
     <main className="index-container">
       <AppHeader filter={filter} setFilter={setFilter} />
-      <AppsideMenu filter={filter} setFilter={setFilter} openCompose={openCompose} qsParams={qsParams} params={params} ContIsRead={ContIsRead} />
+      <AppsideMenu filter={filter} setFilter={setFilter} openCompose={openCompose} qsParams={qsParams} params={params} contIsRead={contIsRead} setContIsRead={setContIsRead}/>
       {!params.emailId && <MailList
         emails={emails}
         handleDelete={handleDelete}

@@ -38,11 +38,11 @@ export function MailPreview({ email, handleDelete, setMails,setContIsRead,ContIs
   async function onToggleSection(email) {
     email.isRead = true;
     let emailUpdated = await mailService.updateEmail(email);
-
+    setContIsRead(0)
     setMails((prev) => {
       return prev.map((curent) => {
-        if(curent.isRead === true){
-          setContIsRead((current)=>current++)
+        if(curent.isRead === false){
+          setContIsRead((current)=>current+=1)
         }
         if (curent.id === email.id) {
           return emailUpdated;

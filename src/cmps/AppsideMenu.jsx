@@ -5,8 +5,28 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import SendIcon from '@mui/icons-material/Send';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { useEffect } from "react";
+import { mailService } from "../services/mail.service";
 
-export function AppsideMenu({ openCompose, setFilter,ContIsRead }) {
+export function AppsideMenu({ openCompose, setFilter,contIsRead,setContIsRead }) {
+  
+  useEffect(()=>{
+    setInitalValue()
+  },[])
+
+  async function setInitalValue(){
+    let mails = await mailService.query({txt: ""});
+    console.log("mails",mails)
+    let count = 0
+    mails.map((el)=>{
+      if(el.isRead === false){
+        count+=1
+      }
+    })
+    console.log("mails"+count)
+    setContIsRead((current)=>current+count)
+  }
+
   return (
     <div className="side-menu">
       <Button color="activity" variant="filledTonal" onClick={openCompose}>
@@ -19,7 +39,7 @@ export function AppsideMenu({ openCompose, setFilter,ContIsRead }) {
           setFilter((oldfilter) => ({ ...oldfilter, status: "inbox" }));
         }}
       >
-      <InboxIcon fontSize="small"></InboxIcon >  Inbox <h6>{ContIsRead}</h6>
+      <InboxIcon fontSize="small"></InboxIcon >  Inbox <span className="isread-count">{contIsRead}</span>
       </Link>
       <Link className="link-elements"
         to={"/mail/star"}
@@ -27,7 +47,7 @@ export function AppsideMenu({ openCompose, setFilter,ContIsRead }) {
           setFilter((oldfilter) => ({ ...oldfilter, status: "star" }));
         }}
       >
-       <StarBorderIcon fontSize="small"> </StarBorderIcon>Starrred <span>{}</span>
+       <StarBorderIcon fontSize="small"> </StarBorderIcon>Starrred 
       </Link>
       <Link className="link-elements"
         to={"/mail/sent"}
@@ -35,7 +55,7 @@ export function AppsideMenu({ openCompose, setFilter,ContIsRead }) {
           setFilter((oldfilter) => ({ ...oldfilter, status: "sent" }));
         }}
       >
-       <SendIcon fontSize="small"></SendIcon> Sent <span>{}</span>
+       <SendIcon fontSize="small"></SendIcon> Sent 
       </Link>
       <Link className="link-elements"
         to={"/mail/trash"}

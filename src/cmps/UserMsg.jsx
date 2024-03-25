@@ -19,10 +19,10 @@ export function UserMsg(){
         setMsg(null)
     }
 
-    if(!msg) return <></>
+    if(!msg) return <h1>loading</h1>
     return    ( 
     <Snackbar
-      open={open}
+    //   open={open}
       autoHideDuration={6000}
       onClose={OncloseMsg}
       message={msg.txt}

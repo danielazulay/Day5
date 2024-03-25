@@ -1,65 +1,65 @@
-.logo-name{
-    font-size: 30px;
-    color: white;
-    border-radius: 50%;
-    background-color: blueviolet;
-    height: 40px;
-    width: 40px;
-    text-align: center;
-    justify-content: center;
-    border-radius: 50%;
-    margin-left: 0;
-
+.logo-name {
+  font-size: 30px;
+  color: white;
+  border-radius: 50%;
+  background-color: blueviolet;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: 0;
 }
 
-.trash-button,button{
-    border: 0;
-    background-color: white;
+.trash-button,
+button {
+  border: 0;
+  background-color: white;
 }
 
-.subjectdetails{
-    margin-top: 10px;
-    margin-left: 50px;
-    margin-bottom: 30px;
+.subjectdetails {
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-bottom: 30px;
 }
-.email-goup{
-    display: grid;
-    grid-template-columns:  auto 1fr;
-    padding-left: 0;
-    margin-left: 0;
+.email-goup {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding-left: 0;
+  margin-left: 0;
 }
-.sent-details{
-    display:inline;
-    margin-left: 8px; 
-    width: 5px;
+.sent-details {
+  display: inline;
+  margin-left: 8px;
+  width: 5px;
 }
-.sent-sender{
-    display: inline-block;
-margin-left: 50px;
-margin-bottom: 15px;
-}
-
-
-    
-
-p,.email-body{
-    font: small / 1.5 Arial, Helvetica, sans-serif;
-    text-align:start;
-    margin-left: 70px;
-    margin-top: 10px;
+.sent-sender {
+  display: inline-block;
+  margin-left: 50px;
+  margin-bottom: 15px;
 }
 
-foot, .reply-button{
-    margin-top: 20px;
-    margin-left: 20px;
-
+p,
+.email-body {
+  font: small / 1.5 Arial, Helvetica, sans-serif;
+  text-align: start;
+  margin-left: 70px;
+  margin-top: 10px;
 }
 
-.reply-button button{
-    border-radius: 25px;
-    background-color: white;
-    padding: 10px;
-    width: 105px;
+foot,
+.reply-button {
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
-.reply-button button:hover {background-color: #d3dbd3}
+.reply-button button {
+  border-radius: 25px;
+  background-color: white;
+  padding: 10px;
+  width: 105px;
+}
+
+.reply-button button:hover {
+  background-color: #d3dbd3;
+}

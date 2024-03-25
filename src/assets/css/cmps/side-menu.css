@@ -3,6 +3,34 @@
     margin: 3px;
     font-weight: 500;
 }
+.link-menu{
+    display: flex;
+    flex-direction:  column;
+
+}
+
+.link-elements{   
+    margin-top: 10px;
+    margin-left: 50px;
+    padding: 5px;   
+    border-radius : 16px;
+    width: 220px;
+}
+
+.link-elements:hover {
+    font-weight: bold!important;
+    background-color: #d3e3fd!important;
+}
+
+/* .link-elements .active {
+    background-color:red;
+} */
+
+.side-menu a.link-elements:active {
+    font-weight: bold!important;
+    background-color: #d3e3fd!important;
+}
+
 .side-menu button{
     height: 60px;
     width: 150px;
@@ -15,6 +43,5 @@
     border: 0;
     width: 100px;
     margin-top: 5px;
-    font-weight: 500;
-    
+    font-weight: 500; 
 } 

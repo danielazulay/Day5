@@ -10,12 +10,12 @@ import { utilService } from "../services/util.service.js";
 
 const MAIL = "emails";
 
-export function MailIndex() {
+export function MailIndex({ ContIsRead }) {
   const [emails, setMails] = useState(null);
   const [filter, setFilter] = useState({ status: "", txt: "", isRead: null });
   const [compose, setCompose] = useState(null)
   const [qsParams, setQsParams] = useSearchParams()
-
+  const [contIsRead, setContIsRead] = useState(0)
 
   const params = useParams()
 
@@ -30,7 +30,7 @@ export function MailIndex() {
     else { setCompose(false) }
   }
 
- function openCompose() {
+  function openCompose() {
     setQsParams(prevState => {
       return {
         ...prevState,
@@ -52,14 +52,14 @@ export function MailIndex() {
       let email = await mailService.getById(emailId);
 
       if (email.removedAt === false) {
-   
+
         email.removedAt = true;
 
         let emailUpdated = await mailService.updateEmail(email);
- 
-        await  utilService.animateCSS(eli,`zoomOut`)
 
-        eventBusService.emit("show-user-msg", { type: "sucess", txt: "Email move to trash successfully",color:"yellow" })
+        await utilService.animateCSS(eli, `zoomOut`)
+
+        eventBusService.emit("show-user-msg", { type: "sucess", txt: "Email move to trash successfully", color: "yellow" })
 
         setMails((prev) => {
           return prev.filter((current) => {
@@ -69,13 +69,14 @@ export function MailIndex() {
           });
         });
 
-        console.log("email delete ",emails)
+
+        console.log("email delete ", emails)
 
       } else {
         await mailService.remove(emailId);
-            await  utilService.animateCSS(eli,`zoomOut`)
-        eventBusService.emit("show-user-msg", { type: "sucess", txt: "Email delete successfully",color:"red" })
-        
+        await utilService.animateCSS(eli, `zoomOut`)
+        eventBusService.emit("show-user-msg", { type: "sucess", txt: "Email delete successfully", color: "red" })
+
         setMails((prev) => {
           return prev.filter((current) => current.id !== emailId);
         });
@@ -102,11 +103,13 @@ export function MailIndex() {
 
     <main className="index-container">
       <AppHeader filter={filter} setFilter={setFilter} />
-      <AppsideMenu filter={filter} setFilter={setFilter} openCompose={openCompose} qsParams={qsParams} params={params} />
+      <AppsideMenu filter={filter} setFilter={setFilter} openCompose={openCompose} qsParams={qsParams} params={params} ContIsRead={ContIsRead} />
       {!params.emailId && <MailList
         emails={emails}
         handleDelete={handleDelete}
         setMails={setMails}
+        contIsRead={contIsRead}
+        setContIsRead={setContIsRead}
       />}
 
       {params.emailId && <Outlet />}

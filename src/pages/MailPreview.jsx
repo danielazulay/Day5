@@ -9,9 +9,10 @@ import { useState } from "react";
 
 const MAIL = "emails";
 
-export function MailPreview({ email, handleDelete, setMails }) {
+export function MailPreview({ email, handleDelete, setMails,setContIsRead,ContIsRead }) {
 
   const [star,setStar] = useState(false)
+  
 
  async function  handleChange({id}){
 
@@ -34,14 +35,15 @@ export function MailPreview({ email, handleDelete, setMails }) {
   });
 }
 
- 
-  
   async function onToggleSection(email) {
     email.isRead = true;
     let emailUpdated = await mailService.updateEmail(email);
 
     setMails((prev) => {
       return prev.map((curent) => {
+        if(curent.isRead === true){
+          setContIsRead((current)=>current++)
+        }
         if (curent.id === email.id) {
           return emailUpdated;
         } else {

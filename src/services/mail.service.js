@@ -143,8 +143,6 @@ async function createEmails() {
         to: loggedUser.email,
       },
     ];
-
-    // await mailService.save(emails)
     utilService.saveToStorage(MAIL_KEY, emails);
   }
 }
